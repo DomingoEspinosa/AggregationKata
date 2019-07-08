@@ -21,6 +21,12 @@ public class Student {
                         Student::getDepartment, Collectors.averagingDouble(Student::getGrade)));
     }
 
+    public static Map<String, Long> getNumberOfStudentsByDepartment(Stream<Student> students) {
+        return students.collect(
+                Collectors.groupingBy(Student::getDepartment,
+                        Collectors.counting()));
+    }
+
     private double getGrade() {
         return grade;
     }

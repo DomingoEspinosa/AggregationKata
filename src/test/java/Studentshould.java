@@ -36,4 +36,15 @@ public class Studentshould {
         actualGrade.put("Philology", 79.0);
         assertEquals(expectedGrade, actualGrade);
     }
+
+    @Test
+    public void basicTestGetNumberOfStudentsByDepartment() {
+        Student[] students = new Student[]{galina, anton, jack, mike, jane};
+        Map<String, Long> actual = Student.getNumberOfStudentsByDepartment(Arrays.stream(students));
+        Map<String, Long> expected = new HashMap<>();
+        expected.put("CS", 2l);
+        expected.put("Philology", 3l);
+
+        assertEquals(expected, actual);
+    }
 }
