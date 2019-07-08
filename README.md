@@ -6,3 +6,5 @@ In the first round you need to:
 - obtain the average grade for department
 In the second round you need to:
 - get the number of students by department
+In the third round you need to:
+- get the names of the students by department.

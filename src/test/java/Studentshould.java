@@ -15,6 +15,7 @@ public class Studentshould {
     private Student anton;
     private Student jack;
     private Student mike;
+    private Student[] students;
 
     @BeforeEach
     void setUp() {
@@ -27,9 +28,7 @@ public class Studentshould {
 
     @Test
     public void basicTestGetAverageGradeByDepartment() {
-
-        Student[] students = new Student[]{galina, anton, jack, mike, jane};
-
+        students = new Student[]{galina, anton, jack, mike, jane};
         Map<String, Double> expectedGrade = Student.getAverageGradeByDepartment(Arrays.stream(students));
         Map<String, Double> actualGrade = new HashMap<>();
         actualGrade.put("CS", 77.5);
@@ -39,7 +38,7 @@ public class Studentshould {
 
     @Test
     public void basicTestGetNumberOfStudentsByDepartment() {
-        Student[] students = new Student[]{galina, anton, jack, mike, jane};
+        students = new Student[]{galina, anton, jack, mike, jane};
         Map<String, Long> actual = Student.getNumberOfStudentsByDepartment(Arrays.stream(students));
         Map<String, Long> expected = new HashMap<>();
         expected.put("CS", 2l);
