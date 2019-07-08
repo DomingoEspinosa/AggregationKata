@@ -27,7 +27,7 @@ public class Studentshould {
     }
 
     @Test
-    public void basicTestGetAverageGradeByDepartment() {
+    public void getAverageGradeByDepartment() {
         students = new Student[]{galina, anton, jack, mike, jane};
         Map<String, Double> expectedGrade = Student.getAverageGradeByDepartment(Arrays.stream(students));
         Map<String, Double> actualGrade = new HashMap<>();
@@ -37,13 +37,12 @@ public class Studentshould {
     }
 
     @Test
-    public void basicTestGetNumberOfStudentsByDepartment() {
+    public void getNumberOfStudentsByDepartment() {
         students = new Student[]{galina, anton, jack, mike, jane};
         Map<String, Long> actual = Student.getNumberOfStudentsByDepartment(Arrays.stream(students));
         Map<String, Long> expected = new HashMap<>();
         expected.put("CS", 2l);
         expected.put("Philology", 3l);
-
         assertEquals(expected, actual);
     }
 }

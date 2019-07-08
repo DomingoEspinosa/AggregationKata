@@ -8,6 +8,8 @@ public class Student {
     private final String department;
     private final String gender;
 
+    private final double PASSING_GRADE = 70.0;
+
     public Student(String name, double grade, String department, String gender) {
         this.name = name;
         this.grade = grade;
