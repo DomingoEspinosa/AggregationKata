@@ -17,11 +17,11 @@ public class Studentshould {
 
     @BeforeEach
     void setUp() {
-        jane = new Student("Jane", 65, "CS", "Female");
-        galina = new Student("Galina", 95, "Philology", "Female");
-        anton = new Student("Anton", 90, "CS", "Male");
-        jack = new Student("Jack", 82, "Philology", "Male");
-        mike = new Student("Mike", 60, "Philology", "Male");
+        jane = new Student("Jane", 65, "CS", Student.Gender.FEMALE);
+        galina = new Student("Galina", 95, "Philology", Student.Gender.FEMALE);
+        anton = new Student("Anton", 90, "CS", Student.Gender.MALE);
+        jack = new Student("Jack", 82, "Philology", Student.Gender.MALE);
+        mike = new Student("Mike", 60, "Philology", Student.Gender.MALE);
         students = new Student[]{galina, anton, jack, mike, jane};
 
     }
@@ -56,4 +56,22 @@ public class Studentshould {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void obtain_number_of_students_by_gender_for_each_department()  {
+
+        Map<String, Map<Student.Gender, Long>> actual = Student.getTheNumberOfStudentsByGenderForEachDepartment(Arrays.stream(students));
+        Map<String, Map<Student.Gender, Long>> expected = new HashMap<>();
+        Map<Student.Gender, Long> map1 = new HashMap<>();
+        Map<Student.Gender, Long> map2 = new HashMap<>();
+        map1.put(Student.Gender.MALE, 1L);
+        map1.put(Student.Gender.FEMALE, 1L);
+        map2.put(Student.Gender.MALE, 2L);
+        map2.put(Student.Gender.FEMALE, 1L);
+        expected.put("CS", map1);
+        expected.put("Philology", map2);
+
+        assertEquals(expected, actual);
+    }
+
 }

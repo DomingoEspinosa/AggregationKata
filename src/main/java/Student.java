@@ -7,11 +7,11 @@ public class Student {
     private final String name;
     private final double grade;
     private final String department;
-    private final String gender;
+    private final Gender gender;
 
     private final double PASSING_GRADE = 70.0;
 
-    public Student(String name, double grade, String department, String gender) {
+    public Student(String name, double grade, String department, Gender gender) {
         this.name = name;
         this.grade = grade;
         this.department = department;
@@ -36,6 +36,13 @@ public class Student {
                         Collectors.mapping(Student::getName, Collectors.toList())));
     }
 
+    public static Map<String, Map<Gender, Long>> getTheNumberOfStudentsByGenderForEachDepartment(Stream<Student> students) {
+        return students.collect(
+                Collectors.groupingBy(Student::getDepartment,
+                        Collectors.groupingBy(Student::getGender, Collectors.counting())));
+
+    }
+
     private double getGrade() {
         return grade;
     }
@@ -46,5 +53,13 @@ public class Student {
 
     private String getName() {
         return name;
+    }
+
+    private Gender getGender() {
+        return gender;
+    }
+
+    public enum Gender {
+        MALE, FEMALE
     }
 }
