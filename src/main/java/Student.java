@@ -30,8 +30,8 @@ public class Student {
                         Collectors.counting()));
     }
 
-    public static Map<String, List<String>> getStudentNamesByDepartment(Stream<Student> strudents) {
-        return strudents.collect(
+    public static Map<String, List<String>> getStudentNamesByDepartment(Stream<Student> students) {
+        return students.collect(
                 Collectors.groupingBy(Student::getDepartment,
                         Collectors.mapping(Student::getName, Collectors.toList())));
     }
